@@ -5,523 +5,141 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Stop guessing what to fix first. PoolApp tells you exactly what to do, in the right order. Like having a pool pro in your pocket.">
     <title>PoolApp - Your Smart Pool Assistant | Join Waitlist</title>
-    
-    <!-- Favicon placeholder -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏊</text></svg>">
-    
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --primary: #0EA5E9;
-            --primary-dark: #0284C7;
-            --secondary: #10B981;
-            --dark: #0F172A;
-            --gray: #64748B;
-            --light-gray: #F1F5F9;
-            --white: #FFFFFF;
-            --red: #EF4444;
-            --yellow: #F59E0B;
-            --green: #10B981;
+            --primary: #0EA5E9; --primary-dark: #0284C7; --secondary: #10B981;
+            --dark: #0F172A; --gray: #64748B; --light-gray: #F1F5F9;
+            --white: #FFFFFF; --red: #EF4444; --yellow: #F59E0B; --green: #10B981;
         }
-
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
-            line-height: 1.6;
-            color: var(--dark);
-            background: var(--white);
+            line-height: 1.6; color: var(--dark); background: var(--white); position: relative;
         }
-
-        /* Typography */
-        h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 1rem;
+        body::before {
+            content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(14, 165, 233, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(125, 211, 252, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(14, 165, 233, 0.02) 0%, transparent 50%);
+            pointer-events: none; z-index: 0;
         }
-
-        h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-        }
-
-        h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        p {
-            font-size: 1.125rem;
-            color: var(--gray);
-            margin-bottom: 1rem;
-        }
-
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-
-        /* Section spacing */
-        section {
-            padding: 4rem 0;
-        }
-
-        /* Hero Section */
+        h1 { font-size: 3rem; font-weight: 800; line-height: 1.1; margin-bottom: 1rem; }
+        h2 { font-size: 2.5rem; font-weight: 700; line-height: 1.2; margin-bottom: 1rem; }
+        h3 { font-size: 1.5rem; font-weight: 600; margin-bottom: 0.5rem; }
+        p { font-size: 1.125rem; color: var(--gray); margin-bottom: 1rem; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; position: relative; z-index: 1; }
+        section { padding: 4rem 0; position: relative; }
         .hero {
-            background: linear-gradient(135deg, #0EA5E9 0%, #0284C7 100%);
-            color: var(--white);
-            text-align: center;
-            padding: 6rem 0 4rem;
+            background: linear-gradient(135deg, #0EA5E9 0%, #0284C7 50%, #0369a1 100%);
+            color: var(--white); text-align: center; padding: 6rem 0 4rem; position: relative; overflow: hidden;
         }
-
-        .hero h1 {
-            color: var(--white);
-            margin-bottom: 1rem;
+        .hero::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                radial-gradient(ellipse at 30% 40%, rgba(255, 255, 255, 0.08) 0%, transparent 40%),
+                radial-gradient(ellipse at 70% 60%, rgba(255, 255, 255, 0.06) 0%, transparent 40%),
+                radial-gradient(ellipse at 50% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 40%);
+            animation: waterFlow 15s ease-in-out infinite; pointer-events: none;
         }
-
-        .hero p {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 1.25rem;
-            margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+        .hero::after {
+            content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 80px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 80' preserveAspectRatio='none'%3E%3Cpath d='M0,40 Q300,10 600,40 T1200,40 L1200,80 L0,80 Z' fill='%23ffffff' opacity='0.9'/%3E%3Cpath d='M0,50 Q300,70 600,50 T1200,50 L1200,80 L0,80 Z' fill='%23ffffff'/%3E%3C/svg%3E") no-repeat bottom;
+            background-size: cover;
         }
-
-        .hero-badges {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 1.5rem;
-            font-size: 0.95rem;
-        }
-
-        .badge {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 0.5rem 1rem;
-            border-radius: 2rem;
-            backdrop-filter: blur(10px);
-        }
-
-        /* Mockup Container */
-        .mockup-container {
-            display: flex;
-            justify-content: center;
-            margin: 3rem 0 2rem;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        /* Phone Mockup */
-        .phone-mockup {
-            width: 280px;
-            background: #1F2937;
-            border-radius: 2rem;
-            padding: 0.75rem;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        }
-
-        .phone-screen {
-            background: var(--white);
-            border-radius: 1.5rem;
-            overflow: hidden;
-            height: 560px;
-        }
-
-        .phone-header {
-            background: var(--primary);
-            color: var(--white);
-            padding: 1.25rem 1rem 1rem;
-            text-align: center;
-            font-weight: 600;
-        }
-
-        .phone-content {
-            padding: 1.5rem;
-        }
-
-        .mockup-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--dark);
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-
-        .input-group {
-            margin-bottom: 1rem;
-        }
-
-        .input-label {
-            display: block;
-            font-size: 0.875rem;
-            font-weight: 600;
-            color: var(--gray);
-            margin-bottom: 0.25rem;
-        }
-
-        .input-field {
-            width: 100%;
-            padding: 0.75rem;
-            border: 2px solid var(--light-gray);
-            border-radius: 0.5rem;
-            font-size: 1rem;
-            background: var(--light-gray);
-        }
-
-        .mockup-button {
-            width: 100%;
-            padding: 1rem;
-            background: var(--primary);
-            color: var(--white);
-            border: none;
-            border-radius: 0.75rem;
-            font-size: 1rem;
-            font-weight: 600;
-            margin-top: 1rem;
-            cursor: default;
-        }
-
-        /* Step Cards */
-        .step-card {
-            background: var(--white);
-            border: 2px solid var(--light-gray);
-            border-radius: 1rem;
-            padding: 1.25rem;
-            margin-bottom: 1rem;
-            position: relative;
-        }
-
-        .step-card.unlocked {
-            border-color: var(--green);
-            background: rgba(16, 185, 129, 0.05);
-        }
-
-        .step-card.locked {
-            opacity: 0.6;
-        }
-
-        .step-number {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 2rem;
-            height: 2rem;
-            background: var(--primary);
-            color: var(--white);
-            border-radius: 50%;
-            font-weight: 700;
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .step-title {
-            font-size: 1.125rem;
-            font-weight: 700;
-            margin-bottom: 0.25rem;
-        }
-
-        .step-reason {
-            font-size: 0.875rem;
-            color: var(--gray);
-            margin-bottom: 0.75rem;
-        }
-
-        .step-dose {
-            background: var(--light-gray);
-            padding: 0.75rem;
-            border-radius: 0.5rem;
-            font-size: 0.875rem;
-            margin-top: 0.5rem;
-        }
-
-        .step-status {
-            position: absolute;
-            top: 1.25rem;
-            right: 1.25rem;
-            font-size: 1.5rem;
-        }
-
-        /* Problem Section */
-        .problem-section {
-            background: var(--light-gray);
-        }
-
-        .problem-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .problem-card {
-            background: var(--white);
-            padding: 1.5rem;
-            border-radius: 1rem;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-        }
-
-        .problem-emoji {
-            font-size: 2.5rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .problem-text {
-            font-size: 1rem;
-            color: var(--dark);
-            line-height: 1.5;
-        }
-
-        /* Solution Section */
-        .solution-section {
-            text-align: center;
-        }
-
-        .solution-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .solution-step {
-            text-align: center;
-        }
-
-        .step-emoji {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        /* Features Section */
-        .features-section {
-            background: var(--light-gray);
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .feature-card {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 1rem;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-        }
-
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .feature-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: var(--dark);
-        }
-
-        .feature-text {
-            color: var(--gray);
-            font-size: 1rem;
-        }
-
-        /* Testimonials */
-        .testimonials-section {
-            text-align: center;
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .testimonial-card {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 1rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            border: 2px solid var(--light-gray);
-        }
-
-        .stars {
-            color: #F59E0B;
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
-        }
-
-        .testimonial-text {
-            font-size: 1rem;
-            color: var(--dark);
-            font-style: italic;
-            margin-bottom: 1rem;
-            line-height: 1.6;
-        }
-
-        .testimonial-author {
-            font-size: 0.875rem;
-            color: var(--gray);
-            font-weight: 600;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            background: linear-gradient(135deg, #0EA5E9 0%, #0284C7 100%);
-            color: var(--white);
-            text-align: center;
-            padding: 5rem 0;
-        }
-
-        .cta-section h2 {
-            color: var(--white);
-        }
-
-        .cta-section p {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 1.25rem;
-        }
-
-        /* Fillout Form Container */
-        .form-container {
-            max-width: 500px;
-            margin: 2rem auto;
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 1rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .cta-benefits {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .benefit-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 1rem;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: rgba(255, 255, 255, 0.7);
-            padding: 2rem 0;
-            text-align: center;
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            font-size: 0.875rem;
-        }
-
-        /* Responsive */
+        .hero h1, .hero p { position: relative; z-index: 2; }
+        .hero h1 { color: var(--white); }
+        .hero p { color: rgba(255, 255, 255, 0.9); font-size: 1.25rem; max-width: 600px; margin: 0 auto 2rem; }
+        .hero-badges { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem; font-size: 0.95rem; position: relative; z-index: 2; }
+        .badge { background: rgba(255, 255, 255, 0.2); padding: 0.5rem 1rem; border-radius: 2rem; backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .mockup-container { display: flex; justify-content: center; margin: 3rem 0 2rem; gap: 1rem; flex-wrap: wrap; position: relative; z-index: 2; }
+        .phone-mockup { width: 280px; background: #1F2937; border-radius: 2rem; padding: 0.75rem; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 40px rgba(14, 165, 233, 0.1); }
+        .phone-screen { background: var(--white); border-radius: 1.5rem; overflow: hidden; height: 560px; }
+        .phone-header { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); color: var(--white); padding: 1.25rem 1rem 1rem; text-align: center; font-weight: 600; position: relative; overflow: hidden; }
+        .phone-header::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); animation: shimmer 3s infinite; }
+        .phone-content { padding: 1.5rem; }
+        .mockup-title { font-size: 1.5rem; font-weight: 700; color: var(--dark); margin-bottom: 1.5rem; text-align: center; }
+        .input-group { margin-bottom: 1rem; }
+        .input-label { display: block; font-size: 0.875rem; font-weight: 600; color: var(--gray); margin-bottom: 0.25rem; }
+        .input-field { width: 100%; padding: 0.75rem; border: 2px solid var(--light-gray); border-radius: 0.5rem; font-size: 1rem; background: var(--light-gray); }
+        .mockup-button { width: 100%; padding: 1rem; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); color: var(--white); border: none; border-radius: 0.75rem; font-size: 1rem; font-weight: 600; margin-top: 1rem; cursor: default; }
+        .step-card { background: var(--white); border: 2px solid var(--light-gray); border-radius: 1rem; padding: 1.25rem; margin-bottom: 1rem; position: relative; transition: all 0.3s ease; }
+        .step-card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(14, 165, 233, 0.1); }
+        .step-card.unlocked { border-color: var(--green); background: rgba(16, 185, 129, 0.05); }
+        .step-card.locked { opacity: 0.6; }
+        .step-number { display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); color: var(--white); border-radius: 50%; font-weight: 700; font-size: 1rem; margin-bottom: 0.5rem; }
+        .step-title { font-size: 1.125rem; font-weight: 700; margin-bottom: 0.25rem; }
+        .step-reason { font-size: 0.875rem; color: var(--gray); margin-bottom: 0.75rem; }
+        .step-dose { background: var(--light-gray); padding: 0.75rem; border-radius: 0.5rem; font-size: 0.875rem; margin-top: 0.5rem; }
+        .step-status { position: absolute; top: 1.25rem; right: 1.25rem; font-size: 1.5rem; }
+        .problem-section { background: linear-gradient(180deg, rgba(14, 165, 233, 0.02) 0%, rgba(14, 165, 233, 0.05) 50%, rgba(14, 165, 233, 0.02) 100%), var(--light-gray); }
+        .problem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+        .problem-card { background: var(--white); padding: 1.5rem; border-radius: 1rem; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); transition: all 0.3s ease; border: 1px solid transparent; }
+        .problem-card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(14, 165, 233, 0.15); border-color: rgba(14, 165, 233, 0.2); }
+        .problem-emoji { font-size: 2.5rem; margin-bottom: 0.75rem; }
+        .problem-text { font-size: 1rem; color: var(--dark); line-height: 1.5; }
+        .solution-section { text-align: center; }
+        .solution-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .solution-step { text-align: center; }
+        .step-emoji { font-size: 3rem; margin-bottom: 1rem; }
+        .features-section { background: linear-gradient(180deg, rgba(14, 165, 233, 0.02) 0%, rgba(14, 165, 233, 0.05) 50%, rgba(14, 165, 233, 0.02) 100%), var(--light-gray); }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem; }
+        .feature-card { background: var(--white); padding: 2rem; border-radius: 1rem; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); transition: all 0.3s ease; border: 1px solid transparent; }
+        .feature-card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(14, 165, 233, 0.15); border-color: rgba(14, 165, 233, 0.2); }
+        .feature-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .feature-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--dark); }
+        .feature-text { color: var(--gray); font-size: 1rem; }
+        .testimonials-section { text-align: center; }
+        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem; }
+        .testimonial-card { background: var(--white); padding: 2rem; border-radius: 1rem; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); border: 2px solid var(--light-gray); transition: all 0.3s ease; }
+        .testimonial-card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(14, 165, 233, 0.15); border-color: rgba(14, 165, 233, 0.3); }
+        .stars { color: #F59E0B; font-size: 1.25rem; margin-bottom: 1rem; }
+        .testimonial-text { font-size: 1rem; color: var(--dark); font-style: italic; margin-bottom: 1rem; line-height: 1.6; }
+        .testimonial-author { font-size: 0.875rem; color: var(--gray); font-weight: 600; }
+        .cta-section { background: linear-gradient(135deg, #0EA5E9 0%, #0284C7 50%, #0369a1 100%); color: var(--white); text-align: center; padding: 5rem 0; position: relative; overflow: hidden; }
+        .cta-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: radial-gradient(ellipse at 20% 30%, rgba(255, 255, 255, 0.08) 0%, transparent 40%), radial-gradient(ellipse at 80% 70%, rgba(255, 255, 255, 0.06) 0%, transparent 40%); animation: waterFlow 20s ease-in-out infinite; pointer-events: none; }
+        .cta-section h2, .cta-section p { position: relative; z-index: 1; }
+        .cta-section h2 { color: var(--white); }
+        .cta-section p { color: rgba(255, 255, 255, 0.9); font-size: 1.25rem; }
+        .form-container { max-width: 500px; margin: 2rem auto; background: var(--white); padding: 2rem; border-radius: 1rem; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); position: relative; z-index: 1; }
+        .cta-benefits { display: flex; justify-content: center; gap: 2rem; margin-top: 1.5rem; flex-wrap: wrap; position: relative; z-index: 1; }
+        .benefit-item { display: flex; align-items: center; gap: 0.5rem; font-size: 1rem; }
+        footer { background: var(--dark); color: rgba(255, 255, 255, 0.7); padding: 2rem 0; text-align: center; }
+        .footer-content { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; font-size: 0.875rem; }
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-
-            h2 {
-                font-size: 1.75rem;
-            }
-
-            section {
-                padding: 3rem 0;
-            }
-
-            .hero {
-                padding: 4rem 0 3rem;
-            }
-
-            .mockup-container {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .phone-mockup {
-                width: 100%;
-                max-width: 320px;
-            }
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.75rem; }
+            section { padding: 3rem 0; }
+            .hero { padding: 4rem 0 3rem; }
+            .mockup-container { flex-direction: column; align-items: center; }
+            .phone-mockup { width: 100%; max-width: 320px; }
         }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in {
-            animation: fadeInUp 0.6s ease-out;
-        }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes waterFlow { 0%, 100% { transform: translate(0, 0) scale(1); } 33% { transform: translate(-10px, -10px) scale(1.05); } 66% { transform: translate(10px, 10px) scale(0.95); } }
+        @keyframes shimmer { 0% { left: -100%; } 50%, 100% { left: 100%; } }
+        .fade-in { animation: fadeInUp 0.6s ease-out; }
     </style>
 </head>
 <body>
-
-    <!-- HERO SECTION -->
     <section class="hero">
         <div class="container">
             <h1 class="fade-in">Stop Guessing What To Fix First</h1>
             <p class="fade-in">PoolApp tells you exactly what to do, in the right order, at the right time. Like having a pool pro in your pocket.</p>
-            
-            <!-- Hero Mockup -->
             <div class="mockup-container fade-in">
                 <div class="phone-mockup">
                     <div class="phone-screen">
-                        <div class="phone-header">
-                            🏊 PoolApp
-                        </div>
+                        <div class="phone-header">🏊 PoolApp</div>
                         <div class="phone-content">
                             <div class="mockup-title">Test Your Water</div>
-                            
-                            <div class="input-group">
-                                <label class="input-label">pH</label>
-                                <input type="text" class="input-field" value="8.2" readonly>
-                            </div>
-                            
-                            <div class="input-group">
-                                <label class="input-label">Chlorine (ppm)</label>
-                                <input type="text" class="input-field" value="0.8" readonly>
-                            </div>
-                            
-                            <div class="input-group">
-                                <label class="input-label">TAC (ppm)</label>
-                                <input type="text" class="input-field" value="95" readonly>
-                            </div>
-                            
+                            <div class="input-group"><label class="input-label">pH</label><input type="text" class="input-field" value="8.2" readonly></div>
+                            <div class="input-group"><label class="input-label">Chlorine (ppm)</label><input type="text" class="input-field" value="0.8" readonly></div>
+                            <div class="input-group"><label class="input-label">TAC (ppm)</label><input type="text" class="input-field" value="95" readonly></div>
                             <button class="mockup-button">GET MY ACTION PLAN</button>
                         </div>
                     </div>
                 </div>
             </div>
-
             <div class="hero-badges">
                 <span class="badge">⭐ Launching December 2025</span>
                 <span class="badge">🇦🇺 Made for Aussie Pools</span>
@@ -529,44 +147,24 @@
         </div>
     </section>
 
-    <!-- PROBLEM SECTION -->
     <section class="problem-section">
         <div class="container">
             <h2 style="text-align: center;">Sound Familiar?</h2>
             <p style="text-align: center; max-width: 700px; margin: 0 auto 2rem;">You're not alone. 78% of pool owners struggle with these exact problems.</p>
-            
             <div class="problem-grid">
-                <div class="problem-card fade-in">
-                    <div class="problem-emoji">😰</div>
-                    <p class="problem-text">"I've got 3 things wrong with my pool - where do I even start?"</p>
-                </div>
-                
-                <div class="problem-card fade-in">
-                    <div class="problem-emoji">🤷</div>
-                    <p class="problem-text">"My pH and chlorine are perfect but I still have algae..."</p>
-                </div>
-                
-                <div class="problem-card fade-in">
-                    <div class="problem-emoji">💸</div>
-                    <p class="problem-text">"I'm wasting money on chemicals that don't seem to work"</p>
-                </div>
-                
-                <div class="problem-card fade-in">
-                    <div class="problem-emoji">⏰</div>
-                    <p class="problem-text">"I spend hours on forums trying to figure this out"</p>
-                </div>
+                <div class="problem-card fade-in"><div class="problem-emoji">😰</div><p class="problem-text">"I've got 3 things wrong with my pool - where do I even start?"</p></div>
+                <div class="problem-card fade-in"><div class="problem-emoji">🤷</div><p class="problem-text">"My pH and chlorine are perfect but I still have algae..."</p></div>
+                <div class="problem-card fade-in"><div class="problem-emoji">💸</div><p class="problem-text">"I'm wasting money on chemicals that don't seem to work"</p></div>
+                <div class="problem-card fade-in"><div class="problem-emoji">⏰</div><p class="problem-text">"I spend hours on forums trying to figure this out"</p></div>
             </div>
         </div>
     </section>
 
-    <!-- SOLUTION SECTION -->
     <section class="solution-section">
         <div class="container">
             <h2>Here's How PoolApp Fixes It</h2>
             <p style="max-width: 600px; margin: 0 auto;">No more guessing. No more forums. Just a clear, step-by-step plan.</p>
-            
             <div class="solution-steps">
-                <!-- Step 1 -->
                 <div class="solution-step fade-in">
                     <div class="step-emoji">📊</div>
                     <div class="phone-mockup" style="margin: 0 auto;">
@@ -574,18 +172,9 @@
                             <div class="phone-header">1️⃣ Test Your Water</div>
                             <div class="phone-content">
                                 <p style="font-size: 0.875rem; color: var(--gray); text-align: center;">Enter your readings in 30 seconds</p>
-                                <div class="input-group">
-                                    <label class="input-label">pH</label>
-                                    <input type="text" class="input-field" value="7.4" readonly>
-                                </div>
-                                <div class="input-group">
-                                    <label class="input-label">Chlorine</label>
-                                    <input type="text" class="input-field" value="2.1" readonly>
-                                </div>
-                                <div class="input-group">
-                                    <label class="input-label">TAC</label>
-                                    <input type="text" class="input-field" value="95" readonly>
-                                </div>
+                                <div class="input-group"><label class="input-label">pH</label><input type="text" class="input-field" value="7.4" readonly></div>
+                                <div class="input-group"><label class="input-label">Chlorine</label><input type="text" class="input-field" value="2.1" readonly></div>
+                                <div class="input-group"><label class="input-label">TAC</label><input type="text" class="input-field" value="95" readonly></div>
                             </div>
                         </div>
                     </div>
@@ -593,7 +182,6 @@
                     <p style="font-size: 1rem;">Enter your readings in 30 seconds</p>
                 </div>
 
-                <!-- Step 2 -->
                 <div class="solution-step fade-in">
                     <div class="step-emoji">🎯</div>
                     <div class="phone-mockup" style="margin: 0 auto;">
@@ -601,7 +189,6 @@
                             <div class="phone-header">2️⃣ Your Action Plan</div>
                             <div class="phone-content">
                                 <p style="font-size: 0.875rem; color: var(--gray); text-align: center; margin-bottom: 1rem;">We tell you WHAT, WHEN, and WHY</p>
-                                
                                 <div class="step-card unlocked">
                                     <div class="step-status">🔓</div>
                                     <div class="step-number">1</div>
@@ -609,7 +196,6 @@
                                     <div class="step-reason">Stabilizes your pH</div>
                                     <div class="step-dose">💊 Add 180g Alkalinity Up<br>⏱️ Wait 4 hours</div>
                                 </div>
-                                
                                 <div class="step-card locked">
                                     <div class="step-status">🔒</div>
                                     <div class="step-number">2</div>
@@ -623,7 +209,6 @@
                     <p style="font-size: 1rem;">WHAT to do, WHEN, and WHY</p>
                 </div>
 
-                <!-- Step 3 -->
                 <div class="solution-step fade-in">
                     <div class="step-emoji">✅</div>
                     <div class="phone-mockup" style="margin: 0 auto;">
@@ -631,19 +216,11 @@
                             <div class="phone-header">3️⃣ Follow Step-by-Step</div>
                             <div class="phone-content">
                                 <div class="mockup-title">STEP 1<br>Fix TAC</div>
-                                
                                 <div style="background: var(--light-gray); padding: 1rem; border-radius: 0.5rem; margin-bottom: 1rem;">
                                     <p style="font-size: 0.875rem; margin: 0;"><strong>Why first?</strong><br>Stabilizes your pH</p>
                                 </div>
-                                
-                                <div class="step-dose">
-                                    💊 Add 180g Alkalinity Up<br>
-                                    🏊 Pour near return jets<br>
-                                    ⏱️ Wait 4 hours
-                                </div>
-                                
+                                <div class="step-dose">💊 Add 180g Alkalinity Up<br>🏊 Pour near return jets<br>⏱️ Wait 4 hours</div>
                                 <button class="mockup-button" style="background: var(--green);">✓ MARK AS DONE</button>
-                                
                                 <p style="font-size: 0.75rem; color: var(--gray); text-align: center; margin-top: 0.5rem;">🔔 We'll remind you in 4h</p>
                             </div>
                         </div>
@@ -655,102 +232,47 @@
         </div>
     </section>
 
-    <!-- FEATURES SECTION -->
     <section class="features-section">
         <div class="container">
             <h2 style="text-align: center;">Why Aussie Pool Owners Love PoolApp</h2>
-            
             <div class="features-grid">
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">🎯</div>
-                    <h3 class="feature-title">Smart Priority System</h3>
-                    <p class="feature-text">Fixes your pool in the RIGHT order (not just random advice). TAC → pH → Chlorine. Every time.</p>
-                </div>
-                
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">🔍</div>
-                    <h3 class="feature-title">Mystery Detective</h3>
-                    <p class="feature-text">Algae despite good levels? We'll find the hidden culprit (phosphates, stabiliser, circulation).</p>
-                </div>
-                
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">⏰</div>
-                    <h3 class="feature-title">Timers & Reminders</h3>
-                    <p class="feature-text">Never forget when to add the next dose. We'll ping you at exactly the right time.</p>
-                </div>
-                
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">💰</div>
-                    <h3 class="feature-title">Save Money</h3>
-                    <p class="feature-text">Stop wasting chemicals. Get exact doses calculated for your pool size. No more guessing.</p>
-                </div>
-                
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">🧠</div>
-                    <h3 class="feature-title">Learn As You Go</h3>
-                    <p class="feature-text">Understand WHY you're doing each step. Become a pool expert without spending hours on forums.</p>
-                </div>
-                
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">☀️</div>
-                    <h3 class="feature-title">Built for Aussie Conditions</h3>
-                    <p class="feature-text">Salt chlorinators, harsh sun, phosphates, high pH - we get it. Made by Aussies, for Aussies.</p>
-                </div>
+                <div class="feature-card fade-in"><div class="feature-icon">🎯</div><h3 class="feature-title">Smart Priority System</h3><p class="feature-text">Fixes your pool in the RIGHT order (not just random advice). TAC → pH → Chlorine. Every time.</p></div>
+                <div class="feature-card fade-in"><div class="feature-icon">🔍</div><h3 class="feature-title">Mystery Detective</h3><p class="feature-text">Algae despite good levels? We'll find the hidden culprit (phosphates, stabiliser, circulation).</p></div>
+                <div class="feature-card fade-in"><div class="feature-icon">⏰</div><h3 class="feature-title">Timers & Reminders</h3><p class="feature-text">Never forget when to add the next dose. We'll ping you at exactly the right time.</p></div>
+                <div class="feature-card fade-in"><div class="feature-icon">💰</div><h3 class="feature-title">Save Money</h3><p class="feature-text">Stop wasting chemicals. Get exact doses calculated for your pool size. No more guessing.</p></div>
+                <div class="feature-card fade-in"><div class="feature-icon">🧠</div><h3 class="feature-title">Learn As You Go</h3><p class="feature-text">Understand WHY you're doing each step. Become a pool expert without spending hours on forums.</p></div>
+                <div class="feature-card fade-in"><div class="feature-icon">☀️</div><h3 class="feature-title">Built for Aussie Conditions</h3><p class="feature-text">Salt chlorinators, harsh sun, phosphates, high pH - we get it. Made by Aussies, for Aussies.</p></div>
             </div>
         </div>
     </section>
 
-    <!-- TESTIMONIALS SECTION -->
     <section class="testimonials-section">
         <div class="container">
             <h2>Early Testers Are Loving It</h2>
-            
             <div class="testimonials-grid">
-                <div class="testimonial-card fade-in">
-                    <div class="stars">⭐⭐⭐⭐⭐</div>
-                    <p class="testimonial-text">"Finally! An app that actually tells me what to do instead of just showing numbers. Game changer."</p>
-                    <p class="testimonial-author">— Sarah M., Perth</p>
-                </div>
-                
-                <div class="testimonial-card fade-in">
-                    <div class="stars">⭐⭐⭐⭐⭐</div>
-                    <p class="testimonial-text">"I was about to hire a pool guy. This saved me $200 and my pool's crystal clear now."</p>
-                    <p class="testimonial-author">— Dave T., Brisbane</p>
-                </div>
-                
-                <div class="testimonial-card fade-in">
-                    <div class="stars">⭐⭐⭐⭐⭐</div>
-                    <p class="testimonial-text">"The step-by-step plan with timers is brilliant. No more guessing games."</p>
-                    <p class="testimonial-author">— Emma L., Sydney</p>
-                </div>
+                <div class="testimonial-card fade-in"><div class="stars">⭐⭐⭐⭐⭐</div><p class="testimonial-text">"Finally! An app that actually tells me what to do instead of just showing numbers. Game changer."</p><p class="testimonial-author">— Sarah M., Perth</p></div>
+                <div class="testimonial-card fade-in"><div class="stars">⭐⭐⭐⭐⭐</div><p class="testimonial-text">"I was about to hire a pool guy. This saved me $200 and my pool's crystal clear now."</p><p class="testimonial-author">— Dave T., Brisbane</p></div>
+                <div class="testimonial-card fade-in"><div class="stars">⭐⭐⭐⭐⭐</div><p class="testimonial-text">"The step-by-step plan with timers is brilliant. No more guessing games."</p><p class="testimonial-author">— Emma L., Sydney</p></div>
             </div>
         </div>
     </section>
 
-    <!-- CTA SECTION -->
     <section class="cta-section">
         <div class="container">
             <h2>Join 500+ Aussies on the Waitlist</h2>
             <p>Be the first to know when we launch in December 2025</p>
-            
-            <!-- FILLOUT FORM EMBED -->
             <div class="form-container">
                 <div style="width:100%;height:500px;" data-fillout-id="nWyUWpeVSjus" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize></div><script src="https://server.fillout.com/embed/v1/"></script>
-                
-                
             </div>
-            
             <div class="cta-benefits">
                 <div class="benefit-item">✅ Free early access</div>
                 <div class="benefit-item">✅ Exclusive launch discount</div>
                 <div class="benefit-item">✅ No credit card needed</div>
             </div>
-            
             <p style="margin-top: 1.5rem; font-size: 1rem;">Launching December 2025</p>
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -761,6 +283,5 @@
             <p style="margin-top: 1rem; font-size: 0.875rem; opacity: 0.7;">© 2025 PoolApp. All rights reserved.</p>
         </div>
     </footer>
-
 </body>
 </html>
