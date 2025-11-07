@@ -684,36 +684,58 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
         </header>-->
 
     <!-- HERO SECTION -->
-        <section class="hero">
-                    <div class="container">
-                        <div class="hero-flex" style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap;">
-                                        <div class="hero-left" style="flex: 1 1 400px; min-width: 300px; max-width: 600px; text-align: left; display: flex; flex-direction: column; align-items: flex-start;">
-            <div class="hero-badges" style="margin-top: 2rem; margin-bottom:2rem; justify-content: center;">
-                <span class="badge">⭐ Launching December 2025</span>
-                <span class="badge">🇦🇺 Made for Aussie Pools</span>
-            </div>
-           <h1 class="fade-in hero-title" style="margin-bottom: 2rem; text-align: left;">Perfect Pool Water.<br>Zero Stuffing Around.</h1>
-<p class="fade-in hero-subtitle" style="text-align: left;">Sick of complex calculations and endless forum scrolls? PoolPulse sorts your pool chemistry, giving you clear, step-by-step instructions for crystal-clear water. Like having a pool bloke in your pocket.</p>
-
-<div id="success-message" style="display: none; width: 100%; max-width: 400px; margin: 2rem auto 0; padding: 1.5rem; border-radius: 1rem; background: #D1FAE5; color: #065F46; border: 1px solid #6EE7B7; text-align: center; font-size: 1.1rem;">
-    🎉 Done! You're on the waitlist. We'll be in touch soon.
-</div>
-
-<div class="waitlist-form-wrapper" style="background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%); border-radius: 1.5rem; padding: 2rem 3rem 2rem 3rem; max-width: 600px; margin: 2rem auto; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
-    <form id="waitlist-form" target="hidden-iframe" action="https://app.loops.so/api/newsletter-form/cmgqx7eq90tsa020irxazlkqw" method="POST" class="waitlist-form" style="width: 100%; display: flex; flex-direction: row; gap: 1rem; align-items: stretch;">
-        <input type="email" name="email" id="email-input" placeholder="Your email address..." required style="flex: 1; padding: 1rem; border-radius: 1rem; border: none; font-size: 1.1rem;">
-        <input type="hidden" name="userGroup" value="Waitlist Australia">
-        <input type="hidden" name="source" value="Hero Form">
-        <button type="submit" class="mockup-button" style="padding: 1rem 2rem; font-size: 1.1rem; margin-top: 0; background: #FDB44B; color: #222; display: flex; align-items: center; justify-content: center; gap: 0.5rem; border: none; border-radius: 1rem; font-weight: 600; cursor: pointer; white-space: nowrap;">
-            Join the waitlist <span style="font-size: 1.3rem; color: #F59E0B;">🔥</span>
-        </button>
-    </form>
-</div>
-
-<iframe name="hidden-iframe" style="display: none;"></iframe>
+<section class="hero">
+    <div class="container">
+        <div class="hero-flex" style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap;">
+            <div class="hero-left" style="flex: 1 1 400px; min-width: 300px; max-width: 600px; text-align: left; display: flex; flex-direction: column; align-items: flex-start;">
+                <div class="hero-badges" style="margin-top: 2rem; margin-bottom:2rem; justify-content: center;">
+                    <span class="badge">⭐ Launching December 2025</span>
+                    <span class="badge">🇦🇺 Made for Aussie Pools</span>
+                </div>
+                <h1 class="fade-in hero-title" style="margin-bottom: 2rem; text-align: left;">Perfect Pool Water.<br>Zero Stuffing Around.</h1>
+                <p class="fade-in hero-subtitle" style="text-align: left;">Sick of complex calculations and endless forum scrolls? PoolPulse sorts your pool chemistry, giving you clear, step-by-step instructions for crystal-clear water. Like having a pool bloke in your pocket.</p>
+                
+                <div id="success-message" style="display: none; width: 100%; max-width: 400px; margin: 2rem auto 0; padding: 1.5rem; border-radius: 1rem; background: #D1FAE5; color: #065F46; border: 1px solid #6EE7B7; text-align: center; font-size: 1.1rem;">
+                    🎉 Done! You're on the waitlist. We'll be in touch soon.
+                </div>
+                
+                <div class="waitlist-form-wrapper" style="background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%); border-radius: 1.5rem; padding: 2rem 3rem 2rem 3rem; max-width: 600px; margin: 2rem auto; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+                    <form id="waitlist-form" target="hidden-iframe" action="https://app.loops.so/api/newsletter-form/cmgqx7eq90tsa020irxazlkqw" method="POST" class="waitlist-form" style="width: 100%; display: flex; flex-direction: row; gap: 1rem; align-items: stretch;">
+                        <input type="email" name="email" id="email-input" placeholder="Your email address..." required style="flex: 1; padding: 1rem; border-radius: 1rem; border: none; font-size: 1.1rem;">
+                        <input type="hidden" name="userGroup" value="Waitlist Australia">
+                        <input type="hidden" name="source" value="Hero Form">
+                        <button type="submit" class="mockup-button" style="padding: 1rem 2rem; font-size: 1.1rem; margin-top: 0; background: #FDB44B; color: #222; display: flex; align-items: center; justify-content: center; gap: 0.5rem; border: none; border-radius: 1rem; font-weight: 600; cursor: pointer; white-space: nowrap;">
+                            Join the waitlist <span style="font-size: 1.3rem; color: #F59E0B;">🔥</span>
+                        </button>
+                    </form>
+                </div>
+                <iframe name="hidden-iframe" style="display: none;"></iframe>
 
 <script>
-document.getElementById('waitlist-form').addEventListener('submit', function() {
+
+document.getElementById('waitlist-form').addEventListener('submit', async function(e) {
+    // Récupère l'email avant la soumission
+    const email = document.getElementById('email-input').value;
+    
+    try {
+        // Hash l'email pour TikTok
+        const hashedEmail = await hashEmail(email);
+        
+        // Track avec TikTok Pixel
+        ttq.identify({
+            "email": hashedEmail
+        });
+        
+        ttq.track('Subscribe', {
+            content_type: 'waitlist',
+            content_name: 'PoolPulse Waitlist Hero Form'
+        });
+    } catch (error) {
+        console.log('TikTok tracking error:', error);
+        // Continue quand même avec la soumission du formulaire
+    }
+    
+    // Affiche le message de succès après un délai
     setTimeout(function() {
         document.getElementById('waitlist-form').style.display = 'none';
         document.getElementById('success-message').style.display = 'block';
@@ -1076,14 +1098,6 @@ document.getElementById('waitlist-form').addEventListener('submit', function() {
 </div>
 
 <script>
-// Fonction pour hasher l'email en SHA-256
-async function hashEmail(email) {
-    const encoder = new TextEncoder();
-    const data = encoder.encode(email.toLowerCase().trim());
-    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
-    const hashArray = Array.from(new Uint8Array(hashBuffer));
-    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-}
 
 document.getElementById('waitlist-form-bottom').addEventListener('submit', async function(e) {
     // Récupère l'email avant la soumission
@@ -1136,5 +1150,16 @@ document.getElementById('waitlist-form-bottom').addEventListener('submit', async
     </div>
 </footer>
     <script src="https://cdn.tinystats.net/scripts/capi.js" async></script>
+
+<script>
+// Fonction de hashing pour tiktok emails
+async function hashEmail(email) {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(email.toLowerCase().trim());
+    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}
+</script>
 </body>
 </html>
