@@ -730,7 +730,6 @@ src="https://www.facebook.com/tr?id=419579150202694&ev=PageView&noscript=1"
                 <iframe name="hidden-iframe" style="display: none;"></iframe>
 
 <script>
-
 document.getElementById('waitlist-form').addEventListener('submit', async function(e) {
     // Récupère l'email avant la soumission
     const email = document.getElementById('email-input').value;
@@ -748,8 +747,15 @@ document.getElementById('waitlist-form').addEventListener('submit', async functi
             content_type: 'waitlist',
             content_name: 'PoolPulse Waitlist Hero Form'
         });
+        
+        // Track avec Facebook Pixel
+        fbq('track', 'Lead', {
+            content_name: 'PoolPulse Waitlist Hero Form',
+            content_category: 'waitlist'
+        });
+        
     } catch (error) {
-        console.log('TikTok tracking error:', error);
+        console.log('Tracking error:', error);
         // Continue quand même avec la soumission du formulaire
     }
     
@@ -1116,7 +1122,6 @@ document.getElementById('waitlist-form').addEventListener('submit', async functi
 </div>
 
 <script>
-
 document.getElementById('waitlist-form-bottom').addEventListener('submit', async function(e) {
     // Récupère l'email avant la soumission
     const email = document.getElementById('email-bottom').value;
@@ -1134,8 +1139,15 @@ document.getElementById('waitlist-form-bottom').addEventListener('submit', async
             content_type: 'waitlist',
             content_name: 'PoolPulse Waitlist Bottom Form'
         });
+        
+        // Track avec Facebook Pixel
+        fbq('track', 'Lead', {
+            content_name: 'PoolPulse Waitlist Bottom Form',
+            content_category: 'waitlist'
+        });
+        
     } catch (error) {
-        console.log('TikTok tracking error:', error);
+        console.log('Tracking error:', error);
         // Continue quand même avec la soumission du formulaire
     }
     
