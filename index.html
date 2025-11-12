@@ -90,7 +90,7 @@ src="https://www.facebook.com/tr?id=419579150202694&ev=PageView&noscript=1"
         }
 
         h1 {
-            font-size: 4rem;
+            font-size: 3.6rem;
             font-weight: 800;
             line-height: 1.1;
             margin-bottom: 1rem;
@@ -127,15 +127,16 @@ src="https://www.facebook.com/tr?id=419579150202694&ev=PageView&noscript=1"
 
         /* Hero Section with pool texture */
         .hero {
-            background: 
-                linear-gradient(135deg, rgba(14, 165, 233, 0.95) 0%, rgba(2, 132, 199, 0.95) 100%),
-                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="pool-pattern" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="1200" height="600" fill="url(%23pool-pattern)"/></svg>');
-            color: var(--white);
-            text-align: center;
-            padding: 4rem 0 4rem;
-            position: relative;
-            overflow: hidden;
-        }
+    background: 
+        linear-gradient(135deg, rgba(10, 132, 190, 0.98) 0%, rgba(2, 100, 160, 0.98) 100%),
+        radial-gradient(circle at top right, rgba(0, 0, 0, 0.2) 0%, transparent 60%),
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="pool-pattern" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1.5" fill="rgba(255,255,255,0.08)"/></pattern></defs><rect width="1200" height="600" fill="url(%23pool-pattern)"/></svg>');
+    color: var(--white);
+    text-align: center;
+    padding: 4rem 0 4rem;
+    position: relative;
+    overflow: hidden;
+}
 
         .hero::before {
             content: '';
@@ -165,16 +166,18 @@ src="https://www.facebook.com/tr?id=419579150202694&ev=PageView&noscript=1"
         }
 
         .hero h1 {
-            color: var(--white);
-        }
+    color: var(--white);
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+}
 
         .hero p {
-            color: rgba(255, 255, 255, 0.9);
+            color: rgba(255, 255, 255, 0.98);
             font-size: 1.1rem;
             margin-bottom: 1rem;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
+            text-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
         }
 
         .hero-badges {
@@ -625,7 +628,9 @@ src="https://www.facebook.com/tr?id=419579150202694&ev=PageView&noscript=1"
                 margin-left: auto;
                 margin-right: auto;
             }
-
+.hide-on-mobile {
+        display: none !important;
+    }
             h2 {
                 font-size: 1.75rem;
             }
@@ -655,6 +660,9 @@ src="https://www.facebook.com/tr?id=419579150202694&ev=PageView&noscript=1"
         margin: 1rem 0.5rem auto !important;
         padding: 1.5rem 1rem !important;
         width: calc(100% - 2rem);
+        background: linear-gradient(135deg, #0f2942 0%, #1e3a5f 100%) !important;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.35) !important;
+    border: 1px solid rgba(255,255,255,0.15);
     }
     
     .waitlist-form {
@@ -691,6 +699,12 @@ src="https://www.facebook.com/tr?id=419579150202694&ev=PageView&noscript=1"
         .fade-in {
             animation: fadeInUp 0.6s ease-out;
         }
+
+   @keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 200%; }
+}
+
     </style>
 </head>
 <body>
@@ -707,23 +721,25 @@ src="https://www.facebook.com/tr?id=419579150202694&ev=PageView&noscript=1"
         <div class="hero-flex" style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap;">
             <div class="hero-left" style="flex: 1 1 400px; min-width: 300px; max-width: 600px; text-align: left; display: flex; flex-direction: column; align-items: flex-start;">
                 <div class="hero-badges" style="margin-top: 2rem; margin-bottom:2rem; justify-content: center;">
-                    <span class="badge">⭐ Launching December 2025</span>
-                    <span class="badge">🇦🇺 Made for Aussie Pools</span>
-                </div>
+    <span class="badge" style="display: none;">⭐ Launching December 2025</span>
+    <span class="badge hide-on-mobile">⭐ Launching December 2025</span>
+    <span class="badge">🇦🇺 Made for Aussie Pools</span>
+</div>
                 <h1 class="fade-in hero-title" style="margin-bottom: 2rem; text-align: left;">Perfect Pool Water.<br>Zero Stuffing Around.</h1>
-                <p class="fade-in hero-subtitle" style="text-align: left;">Sick of complex calculations and endless forum scrolls? PoolPulse sorts your pool chemistry, giving you clear, step-by-step instructions for crystal-clear water. Like having a pool bloke in your pocket.</p>
+                <p class="fade-in hero-subtitle" style="text-align: left;">PoolPulse sorts your pool chemistry with clear, step-by-step instructions. No complex calculations. No forum scrolling. Just crystal-clear water.</p>
                 
                 <div id="success-message" style="display: none; width: 100%; max-width: 400px; margin: 2rem auto 0; padding: 1.5rem; border-radius: 1rem; background: #D1FAE5; color: #065F46; border: 1px solid #6EE7B7; text-align: center; font-size: 1.1rem;">
                     🎉 Done! You're on the waitlist. We'll be in touch soon.
                 </div>
                 
                 <div class="waitlist-form-wrapper" style="background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%); border-radius: 1.5rem; padding: 2rem 3rem 2rem 3rem; max-width: 600px; margin: 2rem auto; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
-                    <form id="waitlist-form" target="hidden-iframe" action="https://app.loops.so/api/newsletter-form/cmgqx7eq90tsa020irxazlkqw" method="POST" class="waitlist-form" style="width: 100%; display: flex; flex-direction: row; gap: 1rem; align-items: stretch;">
+                    <form id="waitlist-form" target="hidden-iframe" action="https://app.loops.so/api/newsletter-form/cmgqx7eq90tsa020irxazlkqw" method="POST" class="waitlist-form" style="width: 100%; display: flex; flex-direction: column; gap: 1rem; align-items: stretch;">
                         <input type="email" name="email" id="email-input" placeholder="Your email address..." required style="flex: 1; padding: 1rem; border-radius: 1rem; border: none; font-size: 1.1rem;">
                         <input type="hidden" name="userGroup" value="Waitlist Australia">
                         <input type="hidden" name="source" value="Hero Form">
-                        <button type="submit" class="mockup-button" style="padding: 1rem 2rem; font-size: 1.1rem; margin-top: 0; background: #FDB44B; color: #222; display: flex; align-items: center; justify-content: center; gap: 0.5rem; border: none; border-radius: 1rem; font-weight: 600; cursor: pointer; white-space: nowrap;">
-                            Join the waitlist <span style="font-size: 1.3rem; color: #F59E0B;">🔥</span>
+                        <button type="submit" class="mockup-button" style="padding: 1rem 2rem; font-size: 1.1rem; margin-top: 0; background: #FDB44B; color: #222; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.25rem; border: none; border-radius: 1rem; font-weight: 600; cursor: pointer; line-height: 1.2;">
+                            <span>Join Waitlist + Get</span>
+                            <span>FREE LIFETIME ACCESS <span style="font-size: 1.3rem;">🎁</span></span>
                         </button>
                     </form>
                 </div>
@@ -766,7 +782,22 @@ document.getElementById('waitlist-form').addEventListener('submit', async functi
     }, 1000);
 });
 </script>
-            <div class="profile-row" style="display: flex; align-items: center; gap: 0.5rem; margin: 1.5rem auto 2.5rem auto; justify-content: center;">
+            <div style="text-align: center; margin-top: 1rem; width: 100%; display: flex; flex-direction: column; align-items: center; gap: 0.75rem;">
+    <p style="font-size: 1rem; color: rgba(255, 255, 255, 0.95); margin: 0; font-weight: 600;">
+        ✅ Free forever for first 500 users
+    </p>
+    <div style="width: 100%; max-width: 300px;">
+        <div style="background: rgba(255,255,255,0.2); height: 8px; border-radius: 10px; overflow: hidden; position: relative;">
+            <div style="background: #FDB44B; height: 100%; width: 70%; border-radius: 10px; position: relative; overflow: hidden;">
+                <div style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent); animation: shimmer 2s infinite;"></div>
+            </div>
+        </div>
+        <p style="font-size: 0.85rem; color: #FDB44B; margin-top: 0.5rem; font-weight: 600;">
+            350 joined • 150 spots remaining ⚡
+        </p>
+    </div>
+</div>
+            <div class="profile-row" style="display: flex; align-items: center; gap: 0.5rem; margin: 1rem auto 2.5rem auto; justify-content: center;">
     <div style="display: flex; align-items: center;">
         <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="profile" style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid #fff; object-fit: cover; margin-left: 0;">
         <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="profile" style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid #fff; object-fit: cover; margin-left: -15px;">
@@ -774,7 +805,7 @@ document.getElementById('waitlist-form').addEventListener('submit', async functi
         <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="profile" style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid #fff; object-fit: cover; margin-left: -15px;">
         <img src="https://randomuser.me/api/portraits/men/23.jpg" alt="profile" style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid #fff; object-fit: cover; margin-left: -15px;">
     </div>
-    <span style="font-size: 1rem; color: #222; margin-left: 0.5rem;"> <strong>500+</strong> pool owners already in</span>
+    <span style="font-size: 1rem; color: rgba(255, 255, 255, 0.9); margin-left: 0.5rem;"><strong>350+</strong> Aussie pool owners already in</span>
 </div>
                                 
                             </div>
@@ -836,35 +867,70 @@ document.getElementById('waitlist-form').addEventListener('submit', async functi
                     </div>
                 </section>
 
-    <!-- PROBLEM SECTION -->
-    <section class="problem-section">
+    <!-- FOUNDER STORY SECTION -->
+    <section style="padding: 4rem 0; background: #FFFFFF;">
         <div class="container">
-            <h2 style="text-align: center;">Sound Familiar?</h2>
-            <p style="text-align: center; max-width: 700px; margin: 0 auto 2rem;">You're not alone. 78% of Aussie pool owners are dealing with the exact same headaches.</p>
-            
-            <div class="problem-grid">
-                <div class="problem-card fade-in">
-                    <div class="problem-emoji">😰</div>
-                    <p class="problem-text">"I've got 3 things wrong - where do I even start?"</p>
+            <div style="max-width: 900px; margin: 0 auto; display: flex; align-items: center; gap: 3rem; flex-wrap: wrap;">
+                <!-- Photo -->
+                <div style="flex: 0 0 200px;">
+                    <img src="https://res.cloudinary.com/dxxq8uaqa/image/upload/v1762956520/jaypoolaustraliasmile_gq7r80.png" alt="Jerome - PoolPulse Founder" style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover; box-shadow: 0 8px 24px rgba(0,0,0,0.15);">
                 </div>
                 
-                <div class="problem-card fade-in">
-                    <div class="problem-emoji">🤷</div>
-                    <p class="problem-text">"My pH and chlorine look fine but I still have algae..."</p>
-                </div>
-                
-                <div class="problem-card fade-in">
-                    <div class="problem-emoji">💸</div>
-                    <p class="problem-text">"I'm wasting money on chemicals that don't seem to work"</p>
-                </div>
-                
-                <div class="problem-card fade-in">
-                    <div class="problem-emoji">⏰</div>
-                    <p class="problem-text">"I spend hours on forums trying to work this out"</p>
+                <!-- Story -->
+                <div style="flex: 1; min-width: 300px;">
+                    <h2 style="font-size: 2rem; margin-bottom: 1rem; text-align: left;">G'day, I'm JJ 👋</h2>
+                    <p style="font-size: 1.125rem; color: #334155; line-height: 1.7; margin-bottom: 1rem; text-align: left;">
+                        I'm a frustrated pool owner who happens to code.
+                    </p>
+                    <p style="font-size: 1.125rem; color: #334155; line-height: 1.7; margin-bottom: 1rem; text-align: left;">
+                        Last summer, I spent <strong>$400 on pool chemicals that didn't work</strong>. The bloke at Bunnings said "add this," forums said "no, do that first," and my pool just got worse.
+                    </p>
+                    <p style="font-size: 1.125rem; color: #334155; line-height: 1.7; margin-bottom: 1rem; text-align: left;">
+                        Sound familiar?
+                    </p>
+                    <p style="font-size: 1.125rem; color: #334155; line-height: 1.7; margin-bottom: 1rem; text-align: left;">
+                        So I built PoolPulse - the app I wished existed. No corporate BS. No guessing. Just clear answers on what to fix and in what order.
+                    </p>
+                    <p style="font-size: 1.125rem; color: #334155; line-height: 1.7; margin-bottom: 1rem; text-align: left;">
+                        I didn't reinvent the wheel. PoolPulse follows the proven <strong>TFP methodology</strong> - I just made it dead simple and adapted it for Aussie pools. Tested on <strong>50+ scenarios</strong> including my own mess. It works.
+                    </p>
+                    <p style="font-size: 1.125rem; color: #334155; line-height: 1.7; margin-bottom: 0; text-align: left;">
+                        Now I'm sharing it with other Aussie pool owners who are sick of stuffing around.
+                    </p>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- PROBLEM SECTION -->
+<section class="problem-section" style="background: #F1F5F9;">
+    <div class="container">
+        <h2 style="text-align: center; color: #0F172A; font-weight: 800;">Sound Familiar?</h2>
+        <p style="text-align: center; max-width: 700px; margin: 0 auto 2rem; color: #0F172A; font-weight: 600; font-size: 1.125rem;">You're not alone. <strong style="color: #EF4444;">78%</strong> of Aussie pool owners are dealing with the exact same headaches.</p>
+        
+        <div class="problem-grid">
+            <div class="problem-card fade-in" style="background: white; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-top: 3px solid #EF4444;">
+                <div class="problem-emoji">😰</div>
+                <p class="problem-text" style="color: #0F172A; font-weight: 400;">"I've got pH, chlorine, AND alkalinity problems - where do I even start?"</p>
+            </div>
+            
+            <div class="problem-card fade-in" style="background: white; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-top: 3px solid #F59E0B;">
+                <div class="problem-emoji">🤷</div>
+                <p class="problem-text" style="color: #0F172A; font-weight: 400;">"My pH and chlorine look fine but I still have algae..."</p>
+            </div>
+            
+            <div class="problem-card fade-in" style="background: white; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-top: 3px solid #10B981;">
+                <div class="problem-emoji">💸</div>
+                <p class="problem-text" style="color: #0F172A; font-weight: 400;">"I'm wasting money on chemicals that don't seem to work"</p>
+            </div>
+            
+            <div class="problem-card fade-in" style="background: white; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-top: 3px solid #0EA5E9;">
+                <div class="problem-emoji">⏰</div>
+                <p class="problem-text" style="color: #0F172A; font-weight: 400;">"I spend hours on forums trying to work this out"</p>
+            </div>
+        </div>
+    </div>
+</section>
 
     <!-- SOLUTION SECTION -->
     <section class="solution-section">
@@ -1027,6 +1093,82 @@ document.getElementById('waitlist-form').addEventListener('submit', async functi
     </div>
 </section>
 
+<!-- CTA SECTION BEFORE FEATURES -->
+<section style="padding: 3rem 0; background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);">
+    <div class="container" style="text-align: center;">
+        <p style="color: #FDB44B; font-size: 0.9rem; font-weight: 600; margin-bottom: 0.5rem;">⚡ LIMITED OFFER</p>
+        <h2 style="color: white; font-size: 2rem; margin-bottom: 1rem;">Get FREE Lifetime Access</h2>
+        
+        <!-- Shimmer Progress Bar -->
+        <div style="text-align: center; margin-bottom: 2rem; width: 100%; display: flex; flex-direction: column; align-items: center; gap: 0.75rem;">
+            <div style="width: 100%; max-width: 400px;">
+                <div style="background: rgba(255,255,255,0.2); height: 12px; border-radius: 10px; overflow: hidden; position: relative;">
+                    <div style="background: #FDB44B; height: 100%; width: 70%; border-radius: 10px; position: relative; overflow: hidden;">
+                        <div style="position: absolute; top: 0; left: -150%; width: 150%; height: 100%; background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.8) 50%, transparent 100%); animation: shimmer 2.5s infinite;"></div>
+                    </div>
+                </div>
+                <p style="font-size: 0.85rem; color: #FDB44B; margin-top: 0.5rem; font-weight: 600;">
+                    350 joined • 150 spots remaining ⚡
+                </p>
+            </div>
+        </div>
+        
+        <div id="success-message-mid" style="display: none; width: 100%; max-width: 500px; margin: 0 auto 2rem; padding: 1.5rem; border-radius: 1rem; background: #D1FAE5; color: #065F46; border: 1px solid #6EE7B7; text-align: center; font-size: 1.1rem;">
+            🎉 You're in! We'll ping you when we launch. Check your inbox.
+        </div>
+        
+        <form id="waitlist-form-mid" target="hidden-iframe-mid" action="https://app.loops.so/api/newsletter-form/cmgqx7eq90tsa020irxazlkqw" method="POST" style="width: 100%; max-width: 500px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem;">
+            <input type="email" name="email" id="email-mid" placeholder="Your email address..." required style="padding: 1rem; border-radius: 1rem; border: none; font-size: 1.1rem;">
+            <input type="hidden" name="userGroup" value="Waitlist Australia">
+            <input type="hidden" name="source" value="Mid Form">
+            <button type="submit" class="mockup-button" style="width: 100%; padding: 1rem 2rem; font-size: 1.1rem; background: #FDB44B; color: #222; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.25rem; border: none; border-radius: 1rem; font-weight: 600; cursor: pointer; line-height: 1.2; box-shadow: 0 4px 12px rgba(253, 180, 75, 0.3);">
+                <span>Join Waitlist + Get</span>
+                <span>FREE LIFETIME ACCESS <span style="font-size: 1.3rem;">🎁</span></span>
+            </button>
+        </form>
+        <iframe name="hidden-iframe-mid" style="display: none;"></iframe>
+    </div>
+</section>
+
+<style>
+@keyframes shimmer {
+    0% { left: -150%; }
+    100% { left: 200%; }
+}
+</style>
+
+<script>
+document.getElementById('waitlist-form-mid').addEventListener('submit', async function(e) {
+    const email = document.getElementById('email-mid').value;
+    
+    try {
+        const hashedEmail = await hashEmail(email);
+        
+        ttq.identify({
+            "email": hashedEmail
+        });
+        
+        ttq.track('Subscribe', {
+            content_type: 'waitlist',
+            content_name: 'PoolPulse Waitlist Mid Form'
+        });
+        
+        fbq('track', 'Lead', {
+            content_name: 'PoolPulse Waitlist Mid Form',
+            content_category: 'waitlist'
+        });
+        
+    } catch (error) {
+        console.log('Tracking error:', error);
+    }
+    
+    setTimeout(function() {
+        document.getElementById('waitlist-form-mid').style.display = 'none';
+        document.getElementById('success-message-mid').style.display = 'block';
+    }, 1000);
+});
+</script>
+
 <!-- FEATURES SECTION -->
 <section class="features-section">
     <div class="container">
@@ -1078,22 +1220,31 @@ document.getElementById('waitlist-form').addEventListener('submit', async functi
         <h2>Early Testers Reckon It's Brilliant</h2>
         
         <div class="testimonials-grid">
-            <div class="testimonial-card fade-in">
-                <div class="stars">⭐⭐⭐⭐⭐</div>
-                <p class="testimonial-text">"Finally! An app that actually tells me what to do instead of just showing numbers. Game changer."</p>
-                <p class="testimonial-author">— Sarah M., Perth</p>
+            <div class="testimonial-card fade-in" style="display: flex; gap: 1rem; align-items: flex-start;">
+                <img src="https://res.cloudinary.com/dxxq8uaqa/image/upload/v1762956177/perth-woman_rrnfdq.png" alt="Sarah with pool" style="width: 90px; height: 160px; border-radius: 0.75rem; object-fit: cover; flex-shrink: 0; pointer-events: none; user-select: none;">
+                <div style="flex: 1;">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"Finally! An app that actually tells me what to do instead of just showing numbers. Game changer."</p>
+                    <p class="testimonial-author">— Sarah M., Perth</p>
+                </div>
             </div>
             
-            <div class="testimonial-card fade-in">
-                <div class="stars">⭐⭐⭐⭐⭐</div>
-                <p class="testimonial-text">"I was about to fork out for a pool guy. This saved me $200 and my pool's crystal clear now."</p>
-                <p class="testimonial-author">— Dave T., Brisbane</p>
+            <div class="testimonial-card fade-in" style="display: flex; gap: 1rem; align-items: flex-start;">
+                <img src="https://res.cloudinary.com/dxxq8uaqa/image/upload/v1762956177/brisbane-man_xk1ybe.png" alt="Dave with pool" style="width: 90px; height: 160px; border-radius: 0.75rem; object-fit: cover; flex-shrink: 0; pointer-events: none; user-select: none;">
+                <div style="flex: 1;">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"I was about to fork out for a pool guy. This saved me $200 and my pool's crystal clear now."</p>
+                    <p class="testimonial-author">— Dave T., Brisbane</p>
+                </div>
             </div>
             
-            <div class="testimonial-card fade-in">
-                <div class="stars">⭐⭐⭐⭐⭐</div>
-                <p class="testimonial-text">"The step-by-step plan with timers is brilliant. No more stuffing around trying to work it out."</p>
-                <p class="testimonial-author">— Emma L., Sydney</p>
+            <div class="testimonial-card fade-in" style="display: flex; gap: 1rem; align-items: flex-start;">
+                <img src="https://res.cloudinary.com/dxxq8uaqa/image/upload/v1762956177/brisbane-woman_wfb7ow.png" alt="Emma with pool" style="width: 90px; height: 160px; border-radius: 0.75rem; object-fit: cover; flex-shrink: 0; pointer-events: none; user-select: none;">
+                <div style="flex: 1;">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"The step-by-step plan with timers is brilliant. No more stuffing around trying to work it out."</p>
+                    <p class="testimonial-author">— Emma L., Sydney</p>
+                </div>
             </div>
         </div>
     </div>
@@ -1102,8 +1253,8 @@ document.getElementById('waitlist-form').addEventListener('submit', async functi
 <!-- CTA SECTION -->
 <section class="cta-section" id="cta-section">
     <div class="container">
-        <h2>Join 500+ Aussies on the Waitlist</h2>
-        <p>Be the first to know when we launch in December 2025</p>
+        <h2>Join 350+ Aussies Getting FREE Lifetime Access</h2>
+        <p>Early supporters get the app free forever. Launching December 2025 🚀</p>
         
         <!-- WAITLIST FORM BOTTOM -->
 <div class="form-container">
@@ -1115,7 +1266,7 @@ document.getElementById('waitlist-form').addEventListener('submit', async functi
         <input type="hidden" name="userGroup" value="Waitlist Australia">
         <input type="hidden" name="source" value="Bottom Form">
         <button type="submit" class="mockup-button" style="width: 100%; padding: 1rem 2.5rem; font-size: 1.25rem; margin-top: 0; background: #FDB44B; color: #222; display: flex; align-items: center; justify-content: center; gap: 0.75rem;">
-            Join the waitlist <span style="font-size: 1.5rem; color: #F59E0B;">🔥</span>
+            Join Waitlist + Get FREE LIFETIME ACCESS <span style="font-size: 1.5rem;">🎁</span>
         </button>
     </form>
     <iframe name="hidden-iframe-bottom" style="display: none;"></iframe>
@@ -1160,8 +1311,20 @@ document.getElementById('waitlist-form-bottom').addEventListener('submit', async
 </script>
         
         <div class="cta-benefits">
-            <div class="benefit-item">✅ Exclusive early access</div>
-            <div class="benefit-item">✅ No credit card needed</div>
+            <div style="text-align: center; margin-top: 1rem; width: 100%; display: flex; flex-direction: column; align-items: center; gap: 0.75rem;">
+    <p style="font-size: 1rem; color: rgba(255, 255, 255, 0.95); margin: 0; font-weight: 600;">
+        ✅ Free forever for first 500 users
+    </p>
+    <div style="width: 100%; max-width: 300px;">
+        <div style="background: rgba(255,255,255,0.2); height: 8px; border-radius: 10px; overflow: hidden; position: relative;">
+            <div style="background: #FDB44B; height: 100%; width: 70%; border-radius: 10px; position: relative; overflow: hidden;">
+                <div style="position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent); animation: shimmer 2s infinite;"></div>
+            </div>
+        </div>
+        <p style="font-size: 0.85rem; color: #FDB44B; margin-top: 0.5rem; font-weight: 600;">
+            350 joined • 150 spots remaining ⚡
+        </p>
+    </div>
         </div>
         
       
@@ -1179,7 +1342,7 @@ document.getElementById('waitlist-form-bottom').addEventListener('submit', async
     <p style="margin-top: 1rem; font-size: 0.875rem; opacity: 0.7;">© 2025 PoolPulse. All rights reserved.</p>
     </div>
 </footer>
-    <script src="https://cdn.tinystats.net/scripts/capi.js" async></script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdn.tinystats.net/scripts/capi.js" async></script>
 
 <script>
 // Fonction de hashing pour tiktok emails
