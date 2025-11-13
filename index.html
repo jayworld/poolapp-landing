@@ -623,7 +623,7 @@ src="https://www.facebook.com/tr?id=419579150202694&ev=PageView&noscript=1"
 
         /* FAQ Section */
         .faq-section {
-            background: #fff;
+            background: #FAFAF9;
             padding: 4rem 0;
         }
 
@@ -656,11 +656,10 @@ src="https://www.facebook.com/tr?id=419579150202694&ev=PageView&noscript=1"
 
         .faq-item {
             background: white;
-            border: 1px solid #e8e8e8;
             border-radius: 1rem;
             overflow: hidden;
             transition: all 0.2s ease;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
         }
 
         .faq-item:hover {
@@ -691,8 +690,7 @@ src="https://www.facebook.com/tr?id=419579150202694&ev=PageView&noscript=1"
         }
 
         .faq-question:focus {
-            outline: 2px solid #FDB44B;
-            outline-offset: -2px;
+            outline: none;
         }
 
         .faq-icon {
@@ -706,22 +704,26 @@ src="https://www.facebook.com/tr?id=419579150202694&ev=PageView&noscript=1"
             justify-content: center;
             transition: all 0.3s ease;
             color: #FDB44B;
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 400;
             line-height: 1;
+            padding-bottom: 2px;
         }
 
         .faq-item[open] .faq-icon {
             background-color: #FDB44B;
             color: white;
             transform: rotate(45deg);
+            border: 1px solid #e8e8e8;
         }
 
         .faq-answer {
-            padding: 0 1.75rem 1.5rem 1.75rem;
-            color: #555;
+            padding: 0 1.75rem 1.25rem 1.75rem;
+            color: #333;
             font-size: 1rem;
             line-height: 1.7;
+            border-radius: 0 0 1rem 1rem;
+            background: white;
         }
 
         .faq-answer p {
@@ -734,6 +736,7 @@ src="https://www.facebook.com/tr?id=419579150202694&ev=PageView&noscript=1"
 
         details {
             list-style: none;
+            border: none;
         }
 
         details::-webkit-details-marker {
